@@ -126,8 +126,7 @@ class Reader(val name: String) {
     try
       off = meta.Languages.get(language).head
     catch {
-      case _: NullPointerException =>
-        return null
+      case _: NullPointerException => return null
     }
     var ipv: Array[Byte] = null
     if (addr.indexOf(":") > 0) {
@@ -145,8 +144,7 @@ class Reader(val name: String) {
     try
       node = findNode(ipv)
     catch {
-      case _: NotFoundException =>
-        return null
+      case _: NotFoundException => return null
     }
     val data = resolve(node)
     data.split("\t", meta.Fields.length * meta.Languages.size).slice(off, off + meta.Fields.length)
